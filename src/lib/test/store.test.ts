@@ -82,4 +82,15 @@ describe('redux store vs svelte store consistency test', () => {
     expect(get(selectCount)).toStrictEqual(0)
     expect(newValCount).toStrictEqual(3)
   })
+
+  test('"selector"s value should be same with those use store/get', () => {
+    const selectCount = select((state: { counter: { count: number } }) => state.counter.count)(adaptedCounterStore)
+
+    adaptedCounterStore.dispatch(counterSlice.actions.increment())
+    adaptedCounterStore.dispatch(counterSlice.actions.increment())
+    adaptedCounterStore.dispatch(counterSlice.actions.increment())
+
+    expect(selectCount.value).toStrictEqual(3)
+    expect(get(selectCount)).toStrictEqual(3)
+  })
 })

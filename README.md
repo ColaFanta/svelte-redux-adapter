@@ -4,7 +4,7 @@ A simple wrapper on `Redux` and makes it possible to use `Redux` store on svelte
 
 Under the hook, it adapts `Redux` store's `subscribe` method to svelte's [store contract](https://svelte.dev/docs#component-format-script-4-prefix-stores-with-$-to-access-their-values-store-contract), without any extra `Readable`, `Derived` overhead.
 
-[![npm version](https://badge.fury.io/js/svelte-redux-adapter.svg)](https://badge.fury.io/js/svelte-redux-adapter)
+[![npm version](https://badge.fury.io/js/svelte-redux-adapter.svg)](https://badge.fury.io/js/svelte-redux-adapter.svg)
 
 [Demo Counter App](https://stackblitz.com/github/ColaFanta/svelte-redux-adapter?file=src/routes/Counter.svelte)
 
@@ -28,6 +28,7 @@ npm install @reduxjs/toolkit
 - [Provider](##`Provider`)
 - [useSelector](##`useSelector()`)
 - [useStore, useDispatch](##`useStore()`,`useDispatch()`)
+- [store.value](##`store.value`)
 
 
 ## `Provider`
@@ -146,6 +147,15 @@ Hooks to grab `store`, `dispatch` from nearest `Provider`
     </button>
   </div>
 
+  ```
+
+## `store.value`
+Those adapted `stores`, either from `redux` or `useSelector`, have an extra getter `.value`. It helps you get memoized value from store instantly which is faster and cleaner than using built-in `store/get`.
+
+  ```js
+  const count = useSelector((rootState: RootState) => rootState.counter.count)
+
+  console.log(count.value === get(count)) // print: true
   ```
 
 ## Contributing ✨
