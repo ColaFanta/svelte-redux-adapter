@@ -1,8 +1,6 @@
-import * as toolkit from '@reduxjs/toolkit'
+import { configureStore, createSlice } from '@reduxjs/toolkit'
 
 import { useDispatch as useDispatchGeneric, useStore as useStoreGeneric } from '$lib/package'
-
-const { createSlice, configureStore } = ((toolkit as any).default ?? toolkit) as typeof toolkit
 
 const counterSlice = createSlice({
   name: 'reduxCounterSlice',
