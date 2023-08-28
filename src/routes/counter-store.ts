@@ -1,6 +1,8 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit'
+import * as toolkitRaw from '@reduxjs/toolkit'
 
 import { useDispatch as useDispatchGeneric, useStore as useStoreGeneric } from '$lib/package'
+
+const { createSlice, configureStore } = ((toolkitRaw as any).default ?? toolkitRaw) as typeof toolkitRaw
 
 const counterSlice = createSlice({
   name: 'reduxCounterSlice',

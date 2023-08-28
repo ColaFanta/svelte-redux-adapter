@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   singleQuote: true,
   semi: false,
   printWidth: 120,
-  plugins: [require('prettier-plugin-svelte'), require('@trivago/prettier-plugin-sort-imports')],
+  plugins: ['prettier-plugin-svelte', '@trivago/prettier-plugin-sort-imports'],
   pluginSearchDirs: ['.'],
   trailingComma: 'es5',
   endOfLine: 'auto',
